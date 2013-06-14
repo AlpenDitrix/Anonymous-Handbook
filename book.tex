@@ -1,0 +1,100 @@
+\documentclass[unicode,a4paper,12pt,russian,openany]{book}
+\usepackage[left=1.5cm,right=1.5cm,
+    top=1.5cm,bottom=1.5cm,bindingoffset=0cm]{geometry}
+\usepackage[dvips]{graphicx}
+\usepackage[unicode=true]{hyperref}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor,mdframed}
+\usepackage{subfigure}
+\usepackage{textcomp}
+\usepackage{soul}
+\usepackage{multibib}
+\usepackage{alltt}
+\usepackage{setspace}
+\usepackage{anyfontsize}
+\newcites{further}{Дальнейшее чтение}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{mauve}{rgb}{0.58,0,0.82} 
+\lstset{ %
+  language=bash,
+  backgroundcolor=\color{white},
+  frame=single,
+  rulecolor=\color{black},
+  tabsize=2,
+  breaklines=true,
+  breakatwhitespace=true, 
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  basicstyle=\ttfamily,
+  keepspaces=true,
+  texcl=true,
+}
+\newenvironment{important}[1][]{%
+   \begin{mdframed}[%
+      backgroundcolor={red!15}, hidealllines=true,
+      skipabove=0.7\baselineskip, skipbelow=0.7\baselineskip,
+      splitbottomskip=2pt, splittopskip=4pt, #1]%
+   \makebox[0pt]{% ignore the withd of !
+      \smash{% ignor the height of !
+         \fontsize{32pt}{32pt}\selectfont% make the ! bigger
+         \hspace*{-19pt}% move ! to the left
+         \raisebox{-2pt}{% move ! up a little
+            {\color{red!70!black}\sffamily\bfseries !}% type the bold red !
+         }%
+      }%
+   }%
+}{\end{mdframed}}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont{Liberation Serif}
+\newfontfamily\cyrillicfonttt{Liberation Serif}
+\setmonofont{Liberation Mono}
+\newfontfamily\cyrillicfonttt{Liberation Mono}
+\setsansfont{Liberation Sans}
+\newfontfamily\cyrillicfonttt{Liberation Sans}
+\setmainlanguage{russian}
+\setdefaultlanguage[spelling=modern]{russian}
+\setotherlanguage{english}
+\setcounter{tocdepth}{3}
+\graphicspath{{images/}}
+\begin{document}
+
+\input{./title.tex}
+
+\begin{spacing}{0.9}
+\tableofcontents
+\end{spacing}
+
+\input{./chap1.tex}
+\input{./chap2.tex}
+\input{./chap3.tex}
+\input{./chap4.tex}
+\input{./chap5.tex}
+\input{./chap6.tex}
+\input{./chap7.tex}
+\input{./chap8.tex}
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Дальнейшее чтение}
+\bibliographystylefurther{gost2008}
+\nocitefurther{*}
+\bibliographyfurther{further}
+
+\newpage
+\small
+\begin{spacing}{0.9}
+\bibliographystyle{gost2008}
+\bibliography{bibliography}
+\end{spacing}
+
+\newpage
+\input{./end.tex}
+
+\end{document}
